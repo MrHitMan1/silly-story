@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Silly Story Generator</title>
+    <style>
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            background: #1e1e1e; /* solid dark background */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #f0f0f0;
+        }
+
+        h1 {
+            margin-top: 40px;
+            font-size: 2.5rem;
+            color: #ffcc70;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+        }
+
+        form {
+            margin: 20px auto;
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 12px;
+            width: 60%;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            width: 60%;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 2px solid #555;
+            background: #1a1a1a;
+            color: #f0f0f0;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #ffcc70;
+        }
+
+        button {
+            background: #ffcc70;
+            color: #1a1a1a;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        button:hover {
+            background: #ffaa33;
+            transform: scale(1.05);
+        }
+
+        .story-box {
+            margin: 30px auto;
+            padding: 20px;
+            width: 60%;
+            background: #222;
+            border-radius: 15px;
+            border: 2px solid #ffcc70;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .story-box h3 {
+            color: #ffaa33;
+            margin-bottom: 15px;
+        }
+
+        .story-box p {
+            font-size: 1.1rem;
+            color: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        #loading {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #ffaa33;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 15px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+    <script>
+        function showLoading() {
+            document.getElementById("loading").style.display = "block";
+        }
+    </script>
+</head>
+<body>
+    <h1>🤪 Silly Story Generator</h1>
+    <form method="post" onsubmit="showLoading()">
+        <input type="text" name="topic" placeholder="Enter a topic (e.g. a cat that loves pizza)">
+        <button type="submit">✨ Generate Story ✨</button>
+    </form>
+
+    <div id="loading">⏳ Waiting for response from Gemini...</div>
+    
+    {% if story %}
+    <div class="story-box">
+        <h3>Your Silly Story:</h3>
+        <p>{{ story }}</p>
+    </div>
+    {% endif %}
+
+    <footer>Made with 🤡 + Gemini</footer>
+</body>
+</html>
