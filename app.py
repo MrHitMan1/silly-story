@@ -6,7 +6,6 @@ import os
 
 app = Flask(__name__)
 
-# Load credentials and initialize Gemini client
 creds, project = google.auth.default()
 
 client = genai.Client(
@@ -30,8 +29,6 @@ def index():
             model=MODEL,
             contents=prompt
 )
-        
-        # Extract the story text
         story = None
         if response.candidates:
             story = "".join(
